@@ -1,0 +1,291 @@
+/* =============================================================================
+   CLINIDENT: Premium Healthcare SaaS Theme Stylesheet
+   Theme: Light background (#F8FAFC), Blue (#0A84FF), Teal (#00C2A8), Dark Navy (#0B1E36)
+   ============================================================================= */
+
+:root {
+  --primary-blue: #0A84FF;
+  --primary-blue-hover: #0070e0;
+  --primary-blue-light: #eff6ff;
+  --secondary-teal: #00C2A8;
+  --secondary-teal-hover: #00a892;
+  --secondary-teal-light: #ecfdf5;
+  --dark-navy: #0B1E36;
+  --slate-dark: #1E293B;
+  --slate-medium: #64748B;
+  --slate-light: #F1F5F9;
+  --border-color: #E2E8F0;
+  --card-bg: #FFFFFF;
+  --bg-main: #F8FAFC;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(11, 30, 54, 0.06), 0 4px 6px -4px rgba(10, 132, 255, 0.04);
+  --shadow-card: 0 2px 10px rgba(11, 30, 54, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Poppins', 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  color: var(--slate-dark);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--dark-navy);
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Sidebar Active State */
+.sidebar-link {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sidebar-link.active {
+  background: linear-gradient(90deg, rgba(10, 132, 255, 0.12) 0%, rgba(0, 194, 168, 0.08) 100%);
+  color: var(--primary-blue);
+  font-weight: 600;
+  border-right: 3px solid var(--primary-blue);
+}
+.sidebar-link.active svg {
+  color: var(--primary-blue);
+}
+
+/* Odontogram Component */
+.odontogram-arch-container {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.tooth-item {
+  width: 44px;
+  height: 68px;
+  border-radius: 8px;
+  border: 1.5px solid #CBD5E1;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.tooth-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 10px rgba(10, 132, 255, 0.15);
+}
+
+.tooth-item.selected {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.25);
+  background-color: #F0F7FF;
+}
+
+.tooth-item .tooth-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748B;
+}
+
+.tooth-item .tooth-icon {
+  width: 26px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+/* Tooth Condition Themes */
+.tooth-cond-healthy .tooth-icon {
+  background-color: #ECFDF5;
+  color: #00C2A8;
+  border: 1px solid #A7F3D0;
+}
+.tooth-cond-caries .tooth-icon {
+  background-color: #FEF2F2;
+  color: #EF4444;
+  border: 1px solid #FECACA;
+}
+.tooth-cond-filled .tooth-icon {
+  background-color: #EFF6FF;
+  color: #0A84FF;
+  border: 1px solid #BFDBFE;
+}
+.tooth-cond-crown .tooth-icon {
+  background-color: #FFFBEB;
+  color: #D97706;
+  border: 1px solid #FDE68A;
+}
+.tooth-cond-missing .tooth-icon {
+  background-color: #F8FAFC;
+  color: #94A3B8;
+  border: 1px dashed #CBD5E1;
+}
+.tooth-cond-rct .tooth-icon {
+  background-color: #FAF5FF;
+  color: #9333EA;
+  border: 1px solid #E9D5FF;
+}
+
+/* Before and After Image Comparison Slider */
+.comparison-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #0F172A;
+  user-select: none;
+}
+
+.comp-img-before,
+.comp-img-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.comp-img-before {
+  width: 50%;
+  overflow: hidden;
+  border-right: 3px solid #00C2A8;
+  z-index: 2;
+}
+
+.comp-img-before-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.comp-slider-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  background: #00C2A8;
+  border: 3px solid #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: ew-resize;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+/* AI Detection Overlay Boxes */
+.ai-detection-box {
+  position: absolute;
+  border: 2px dashed #00C2A8;
+  background: rgba(0, 194, 168, 0.16);
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  z-index: 8;
+  cursor: pointer;
+}
+
+.ai-detection-box:hover {
+  border-color: #0A84FF;
+  background: rgba(10, 132, 255, 0.22);
+}
+
+.ai-box-tag {
+  position: absolute;
+  top: -24px;
+  left: -2px;
+  background: #0B1E36;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Voice-to-Text Recording Animation */
+.recording-pulse {
+  animation: pulseRecording 1.5s infinite;
+}
+
+@keyframes pulseRecording {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* 3D STL Canvas Container */
+#stlCanvasContainer {
+  background: radial-gradient(circle at center, #1E293B 0%, #0F172A 100%);
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Printable Prescription Slip */
+@media print {
+  body {
+    background: #FFFFFF !important;
+  }
+  .no-print,
+  #sidebarNav,
+  #topNavbar,
+  .btn-action-no-print {
+    display: none !important;
+  }
+  .print-prescription-only {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
